@@ -2,11 +2,14 @@
 The aim of this project is to learn some concept of rails api
 
 ## Requirements
+Please make sure you have the following tools installed
 
-* make sure you have ruby 2.6.2 or highier
-* aslso rails 6.0.0 or highier
+* ruby 2.6.2 or higher
+* rails 6.0.0 or higher
+* sqlite3 3.28.0 or higher
 
 ## Running
+After installation of all tools above, clone the project and run:
 
 * `rails server`
 
@@ -17,7 +20,6 @@ The aim of this project is to learn some concept of rails api
 * `rails new folder --api`
 * `rails g model User first_name:string last_name:string` this creates the `db/migrate/script` that needs to be run with the next command
 * `rails db:migrate` this executes the migration scripts
-
 
 ### extra changes
 
