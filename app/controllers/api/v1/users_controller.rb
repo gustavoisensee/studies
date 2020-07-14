@@ -6,7 +6,10 @@ module Api
       end
 
       def create
-        user = User.create(name: params[:name])
+        user = User.create(
+          first_name: params[:first_name],
+          last_name: params[:last_name]
+        )
         render json: { user: user }, status: :ok
       end
     end
