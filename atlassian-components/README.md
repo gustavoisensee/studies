@@ -5,7 +5,7 @@ This project aims to use and some atlassian components to test them out!
 ## Check it out
 
 This is how it looks like so far:
-![Home page preview](https://raw.githubusercontent.com/gustavoisensee/studies/main/atlassian-components/assets/home.png)
+![Home page preview](https://raw.githubusercontent.com/gustavoisensee/studies/main/atlassian-components/assets/home.png | width=300)
 
 
 ## How to run
