@@ -1,6 +1,6 @@
 # Atlassian components use
 
-This project aims to use and some atlassian components to test them out!
+This project aims to use some atlassian components to test them out!
 
 ## Check it out
 
