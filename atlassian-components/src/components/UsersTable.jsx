@@ -11,16 +11,16 @@ const defaultPage = 1;
 function UsersTable() {
   const [state, setState] = useState({
     data: [],
-    loading: true
+    loading: true,
   });
 
   const getData = async (page = 1, search = '') => {
-    if (!state.loading) setState((prev) => ({ ...prev, loading: true }));
+    setState((prev) => ({ ...prev, loading: true }));
 
     // Add timeout just to see the table spinner
     setTimeout(async () => {
       const data = await fetchUsers(limit, page, search);
-      setState((prev) => ({ ...prev, loading: false, data: formatRows(data) }));
+      setState(() => ({ loading: false, data: formatRows(data) }));
     }, 1000);
   };
 
@@ -34,11 +34,10 @@ function UsersTable() {
     getData(defaultPage);
     return () => {
       usersObserver.unsubscribe(getData);
-    }
+    };
   }, []);
 
   return (
-   
     <>
       <DynamicTable
         caption='List of Users'

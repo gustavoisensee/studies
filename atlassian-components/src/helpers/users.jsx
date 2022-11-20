@@ -2,6 +2,7 @@ import Avatar from '@atlaskit/avatar';
 import EditIcon from '@atlaskit/icon/glyph/edit';
 import TrashIcon from '@atlaskit/icon/glyph/trash';
 import Button from '@atlaskit/button';
+import { openUserModal } from './observer';
 
 export const head = {
   cells: [
@@ -44,9 +45,14 @@ export const formatRows = (data) => {
         key: '',
         content: (
           <div className='flex justify-end'>
-            <Button iconBefore={<EditIcon />}>Edit</Button>
+            <Button onClick={() => openUserModal(id)} iconBefore={<EditIcon />}>
+              Edit
+            </Button>
             <div className='ml-2'>
-              <Button iconBefore={<TrashIcon primaryColor='#FF5630' />}>
+              <Button
+                iconBefore={<TrashIcon primaryColor='#FF5630' />}
+                onClick={() => alert('Work in progress!')}
+              >
                 Delete
               </Button>
             </div>

@@ -19,10 +19,21 @@ export async function fetchUsers(limit, page, search = '') {
   }
 }
 
-export async function createUser(data) {
-  const url = `${apiUrl}/users`;
+export async function fetchUser(id) {
+  const url = `${apiUrl}/users/${id}`;
+
+  try {
+    const r = await fetch(url);
+    return await r.json();
+  } catch {
+    return [];
+  }
+}
+
+export async function saveUser(data) {
+  const url = `${apiUrl}/users${data.id ? `/${data.id}` : ''}`;
   const options = {
-    method: 'POST',
+    method: data.id ? 'PUT' : 'POST',
     body: JSON.stringify(data)
   }
 
