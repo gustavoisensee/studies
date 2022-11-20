@@ -155,7 +155,7 @@
     react-uid "^2.2.0"
     tiny-invariant "^1.2.0"
 
-"@atlaskit/icon@^21.11.0":
+"@atlaskit/icon@^21.11.0", "@atlaskit/icon@^21.11.1":
   version "21.11.1"
   resolved "https://registry.yarnpkg.com/@atlaskit/icon/-/icon-21.11.1.tgz#30d0197ebdf10b41b37aef0c0d67335fbe410284"
   integrity sha512-KAcEmf7M04AFeHpzOA+JiHZ6bAXz7h6vNlMd543VZM15fyjMMiP/p3DItnmEwK1mej0zBRT98nnhiDKxaHtJug==
@@ -2146,6 +2146,11 @@ local-pkg@^0.4.2:
   version "0.4.2"
   resolved "https://registry.yarnpkg.com/local-pkg/-/local-pkg-0.4.2.tgz#13107310b77e74a0e513147a131a2ba288176c2f"
   integrity sha512-mlERgSPrbxU3BP4qBqAvvwlgW4MTg78iwJdGGnv7kibKjWcJksrG3t6LB5lXI93wXRDvG4NpUgJFmTG4T6rdrg==
+
+lodash.debounce@^4.0.8:
+  version "4.0.8"
+  resolved "https://registry.yarnpkg.com/lodash.debounce/-/lodash.debounce-4.0.8.tgz#82d79bff30a67c4005ffd5e2515300ad9ca4d7af"
+  integrity sha512-FT1yDzDYEoYWhnSGnpE/4Kj1fLZkDFyqRb7fNt6FdYOSxlUWAtp42Eh6Wb0rGIv/m9Bgo7x4GhQbm5Ys4SG5ow==
 
 lodash@^4.17.15, lodash@^4.17.21:
   version "4.17.21"

@@ -1,4 +1,7 @@
 import Avatar from '@atlaskit/avatar';
+import EditIcon from '@atlaskit/icon/glyph/edit';
+import TrashIcon from '@atlaskit/icon/glyph/trash';
+import Button from '@atlaskit/button';
 
 export const head = {
   cells: [
@@ -12,9 +15,13 @@ export const head = {
       content: 'E-mail',
       isSortable: true,
     },
+    {
+      key: '',
+      content: '',
+      // width: 100
+    },
   ],
 };
-
 
 export const formatRows = (data) => {
   const rows = data.map(({ id, name, email, avatar }) => ({
@@ -32,6 +39,19 @@ export const formatRows = (data) => {
       {
         key: email,
         content: email,
+      },
+      {
+        key: '',
+        content: (
+          <div className='flex justify-end'>
+            <Button iconBefore={<EditIcon />}>Edit</Button>
+            <div className='ml-2'>
+              <Button iconBefore={<TrashIcon primaryColor='#FF5630' />}>
+                Delete
+              </Button>
+            </div>
+          </div>
+        ),
       },
     ],
   }));

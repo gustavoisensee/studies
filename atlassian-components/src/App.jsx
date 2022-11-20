@@ -10,8 +10,8 @@ import Wrapper from './components/RouterWrapper';
 import { Routes as CRoutes } from './consts';
 import './App.css';
 
-const Page1 = lazy(() => import('./pages/Page1'));
-const Page2 = lazy(() => import('./pages/Page2'));
+const Home = lazy(() => import('./pages/Home'));
+const Users = lazy(() => import('./pages/Users'));
 
 function App() {
   return (
@@ -20,8 +20,8 @@ function App() {
         <NavBar />
         <div className='mt-2 p-4'>
           <Routes>
-            <Route path={CRoutes.Page1} element={<Wrapper C={Page1} />} />
-            <Route path={CRoutes.Page2} element={<Wrapper C={Page2} />} />
+            <Route path={CRoutes.Home} element={<Wrapper C={Home} />} />
+            <Route path={CRoutes.Users} element={<Wrapper C={Users} />} />
             <Route path='*' element={<Navigate to='/' replace />} />
           </Routes>
         </div>

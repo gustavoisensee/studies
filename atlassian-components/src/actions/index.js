@@ -8,8 +8,8 @@ export function fetchData() {
   });
 }
 
-export async function fetchUsers(limit, page) {
-  const url = `${apiUrl}/users?limit=${limit}&page=${page}&sortBy=id&order=desc`;
+export async function fetchUsers(limit, page, search = '') {
+  const url = `${apiUrl}/users?limit=${limit}&page=${page}&sortBy=id&order=desc&name=${search}`;
 
   try {
     const r = await fetch(url);

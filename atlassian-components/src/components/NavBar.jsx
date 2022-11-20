@@ -16,16 +16,16 @@ function NavBar() {
       label='site'
       primaryItems={[
         <PrimaryButton
-          onClick={() => navigate(Routes.Page1)}
-          isSelected={pathname === Routes.Page1}
+          onClick={() => navigate(Routes.Home)}
+          isSelected={pathname === Routes.Home}
         >
-          Page 1
+          Home
         </PrimaryButton>,
         <PrimaryButton
-          onClick={() => navigate(Routes.Page2)}
-          isSelected={pathname === Routes.Page2}
+          onClick={() => navigate(Routes.Users)}
+          isSelected={pathname === Routes.Users}
         >
-          Page 2
+          Users
         </PrimaryButton>,
       ]}
       renderProductHome={() => (
