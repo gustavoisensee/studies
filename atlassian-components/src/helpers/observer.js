@@ -10,15 +10,15 @@ class Observer {
   }
 
   unsubscribe(func) {
-    this.observers = this.observers?.filter?.(o => o !== func) || [];
+    this.observers = this.observers?.filter?.((o) => o !== func) || [];
   }
 
   notify(...args) {
-    this.observers?.forEach?.(func => {
+    this.observers?.forEach?.((func) => {
       func(...args);
-    })
+    });
   }
-};
+}
 
 export const usersObserver = new Observer();
 
