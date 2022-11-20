@@ -4,7 +4,9 @@ class Observer {
   }
 
   subscribe(func) {
-    this.observers?.push?.(func);
+    if (!this.observers?.includes?.(func)) {
+      this.observers?.push?.(func);
+    }
   }
 
   unsubscribe(func) {
