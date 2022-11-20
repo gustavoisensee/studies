@@ -12,7 +12,7 @@ import Form, {
   FormSection,
 } from '@atlaskit/form';
 import { saveUser, fetchUser } from '../actions';
-import { userModalObserver, usersObserver } from '../helpers/observer';
+import { updateUsers, userModalObserver, usersObserver } from '../helpers/observer';
 import { useEffect } from 'react';
 
 export default function UserModal() {
@@ -39,7 +39,7 @@ export default function UserModal() {
 
     if (res) {
       closeModal();
-      usersObserver.notify(1, '');
+      updateUsers();
     } else {
       // TODO add some error handling
     }

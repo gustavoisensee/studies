@@ -21,6 +21,7 @@ class Observer {
 }
 
 export const usersObserver = new Observer();
+export const updateUsers = (...args) => usersObserver.notify(...args);
 
 export const userModalObserver = new Observer();
 export const openUserModal = (id) => userModalObserver.notify(id);

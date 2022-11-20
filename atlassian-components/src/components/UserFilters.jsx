@@ -2,11 +2,11 @@ import { useCallback } from 'react';
 import debounce from 'lodash.debounce';
 import TextField from '@atlaskit/textfield';
 import SearchIcon from '@atlaskit/icon/glyph/search';
-import { usersObserver } from '../helpers/observer';
+import { updateUsers } from '../helpers/observer';
 
 export default function UserFilters() {
   const setSearchDebounce = useCallback(
-    debounce((search) => usersObserver.notify(1, search), 500),
+    debounce((search) => updateUsers(1, search), 500),
     []
   );
 
