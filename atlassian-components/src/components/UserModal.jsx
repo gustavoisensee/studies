@@ -12,7 +12,7 @@ import Form, {
   FormSection,
 } from '@atlaskit/form';
 import { saveUser, fetchUser } from '../actions';
-import { updateUsers, userModalObserver, usersObserver } from '../helpers/observer';
+import { updateUsers, userModalObserver } from '../helpers/observer';
 import { useEffect } from 'react';
 
 export default function UserModal() {
@@ -21,6 +21,7 @@ export default function UserModal() {
     loading: false,
     data: {},
   });
+
   const openModal = useCallback(async (id) => {
     setIsOpen(true);
     if (id) {
@@ -30,8 +31,11 @@ export default function UserModal() {
       setTimeout(() => {
         if (data) setState({ loading: false, data });
       }, 1000);
+    } else {
+      setState({ data: {}, loading: false });
     }
   }, []);
+
   const closeModal = useCallback(() => setIsOpen(false), []);
 
   const handleSubmit = async (data) => {
@@ -54,7 +58,7 @@ export default function UserModal() {
   return (
     <div>
       <div className='flex justify-end'>
-        <Button appearance='primary' onClick={() => openModal()}>
+        <Button appearance='primary' onClick={() => openModal('')}>
           New user
         </Button>
       </div>
@@ -96,7 +100,11 @@ export default function UserModal() {
 
                     <FormFooter>
                       <ButtonGroup>
-                        {state.loading && <div className='flex items-center mr-2'><Spinner size='small' /></div>}
+                        {state.loading && (
+                          <div className='flex items-center mr-2'>
+                            <Spinner size='small' />
+                          </div>
+                        )}
                         <Button appearance='subtle' onClick={closeModal}>
                           Cancel
                         </Button>

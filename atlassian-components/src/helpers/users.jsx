@@ -2,7 +2,7 @@ import Avatar from '@atlaskit/avatar';
 import EditIcon from '@atlaskit/icon/glyph/edit';
 import TrashIcon from '@atlaskit/icon/glyph/trash';
 import Button from '@atlaskit/button';
-import { openUserModal } from './observer';
+import { openUserDeleteModal, openUserModal } from './observer';
 
 export const head = {
   cells: [
@@ -51,7 +51,7 @@ export const formatRows = (data) => {
             <div className='ml-2'>
               <Button
                 iconBefore={<TrashIcon primaryColor='#FF5630' />}
-                onClick={() => alert('Work in progress!')}
+                onClick={() => openUserDeleteModal(id)}
               >
                 Delete
               </Button>

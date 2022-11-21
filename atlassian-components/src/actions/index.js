@@ -26,7 +26,7 @@ export async function fetchUser(id) {
     const r = await fetch(url);
     return await r.json();
   } catch {
-    return [];
+    return null;
   }
 }
 
@@ -34,13 +34,27 @@ export async function saveUser(data) {
   const url = `${apiUrl}/users${data.id ? `/${data.id}` : ''}`;
   const options = {
     method: data.id ? 'PUT' : 'POST',
-    body: JSON.stringify(data)
-  }
+    body: JSON.stringify(data),
+  };
 
   try {
     const r = await fetch(url, options);
     return await r.json();
   } catch {
-    return [];
+    return null;
+  }
+}
+
+export async function deleteUser(id) {
+  const url = `${apiUrl}/users/${id}`;
+  const options = {
+    method: 'DELETE',
+  };
+
+  try {
+    const r = await fetch(url, options);
+    return await r.json();
+  } catch {
+    return null;
   }
 }

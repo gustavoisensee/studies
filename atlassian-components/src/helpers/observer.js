@@ -25,3 +25,6 @@ export const updateUsers = (...args) => usersObserver.notify(...args);
 
 export const userModalObserver = new Observer();
 export const openUserModal = (id) => userModalObserver.notify(id);
+
+export const userDeleteModal = new Observer();
+export const openUserDeleteModal = (id) => userDeleteModal.notify(id);
