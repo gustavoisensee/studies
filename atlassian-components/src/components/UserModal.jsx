@@ -11,6 +11,7 @@ import Form, {
   FormHeader,
   FormSection,
 } from '@atlaskit/form';
+import Select from '@atlaskit/select';
 import { saveUser, fetchUser } from '../actions';
 import { updateUsers, userModalObserver } from '../helpers/observer';
 import { useEffect } from 'react';
@@ -94,6 +95,32 @@ export default function UserModal() {
                       >
                         {({ fieldProps }) => (
                           <TextField type='email' {...fieldProps} />
+                        )}
+                      </Field>
+
+                      <Field
+                        aria-required={true}
+                        name='role'
+                        label='Choose a role'
+                        isRequired
+                        isDisabled={state.loading}
+                        defaultValue={state.data?.role || ''}
+                      >
+                        {({ fieldProps }) => (
+                          <Select
+                            inputId='role'
+                            className='single-select'
+                            classNamePrefix='react-select'
+                            isClearable={true}
+                            options={[
+                              { label: 'Admin', value: 'admin' },
+                              { label: 'Developer', value: 'developer' },
+                              { label: 'Designer', value: 'designer' },
+                              { label: 'Manager', value: 'manager' },
+                            ]}
+                            required
+                            {...fieldProps}
+                          />
                         )}
                       </Field>
                     </FormSection>
