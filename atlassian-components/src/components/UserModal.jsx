@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { Fragment, useCallback, useState } from 'react';
 import ButtonGroup from '@atlaskit/button/button-group';
 import LoadingButton from '@atlaskit/button/loading-button';
 import Button from '@atlaskit/button/standard-button';
@@ -10,6 +10,7 @@ import Form, {
   FormFooter,
   FormHeader,
   FormSection,
+  ErrorMessage,
 } from '@atlaskit/form';
 import Select from '@atlaskit/select';
 import { saveUser, fetchUser } from '../actions';
@@ -40,7 +41,12 @@ export default function UserModal() {
   const closeModal = useCallback(() => setIsOpen(false), []);
 
   const handleSubmit = async (data) => {
-    const res = await saveUser({ ...state.data, ...data });
+    const _data = {
+      ...state.data,
+      ...data,
+      role: data?.role?.value || '',
+    };
+    const res = await saveUser(_data);
 
     if (res) {
       closeModal();
@@ -80,9 +86,15 @@ export default function UserModal() {
                         isRequired
                         isDisabled={state.loading}
                         defaultValue={state.data?.name || ''}
+                        validate={(val) =>
+                          !!val ? '' : 'Please enter the user name!'
+                        }
                       >
-                        {({ fieldProps }) => (
-                          <TextField autoFocus {...fieldProps} />
+                        {({ fieldProps, error }) => (
+                          <Fragment>
+                            <TextField autoFocus {...fieldProps} />
+                            {error && <ErrorMessage>{error}</ErrorMessage>}
+                          </Fragment>
                         )}
                       </Field>
                       <Field
@@ -92,9 +104,15 @@ export default function UserModal() {
                         isRequired
                         isDisabled={state.loading}
                         defaultValue={state.data?.email || ''}
+                        validate={(val) =>
+                          !!val ? '' : 'Please enter an email!'
+                        }
                       >
-                        {({ fieldProps }) => (
-                          <TextField type='email' {...fieldProps} />
+                        {({ fieldProps, error }) => (
+                          <Fragment>
+                            <TextField type='email' {...fieldProps} />
+                            {error && <ErrorMessage>{error}</ErrorMessage>}
+                          </Fragment>
                         )}
                       </Field>
 
@@ -105,22 +123,27 @@ export default function UserModal() {
                         isRequired
                         isDisabled={state.loading}
                         defaultValue={state.data?.role || ''}
+                        validate={(val) =>
+                          !!val ? '' : 'Please select a role!'
+                        }
                       >
-                        {({ fieldProps }) => (
-                          <Select
-                            inputId='role'
-                            className='single-select'
-                            classNamePrefix='react-select'
-                            isClearable={true}
-                            options={[
-                              { label: 'Admin', value: 'admin' },
-                              { label: 'Developer', value: 'developer' },
-                              { label: 'Designer', value: 'designer' },
-                              { label: 'Manager', value: 'manager' },
-                            ]}
-                            required
-                            {...fieldProps}
-                          />
+                        {({ fieldProps, error }) => (
+                          <Fragment>
+                            <Select
+                              inputId='role'
+                              className='single-select'
+                              classNamePrefix='react-select'
+                              isClearable={true}
+                              options={[
+                                { label: 'Admin', value: 'admin' },
+                                { label: 'Developer', value: 'developer' },
+                                { label: 'Designer', value: 'designer' },
+                                { label: 'Manager', value: 'manager' },
+                              ]}
+                              {...fieldProps}
+                            />
+                            {error && <ErrorMessage>{error}</ErrorMessage>}
+                          </Fragment>
                         )}
                       </Field>
                     </FormSection>

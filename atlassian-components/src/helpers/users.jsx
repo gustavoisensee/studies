@@ -17,6 +17,11 @@ export const head = {
       isSortable: true,
     },
     {
+      key: 'role',
+      content: 'Role',
+      isSortable: true,
+    },
+    {
       key: '',
       content: '',
       // width: 100
@@ -25,7 +30,7 @@ export const head = {
 };
 
 export const formatRows = (data) => {
-  const rows = data.map(({ id, name, email, avatar }) => ({
+  const rows = data.map(({ id, name, email, avatar, role }) => ({
     key: id,
     cells: [
       {
@@ -40,6 +45,10 @@ export const formatRows = (data) => {
       {
         key: email,
         content: email,
+      },
+      {
+        key: role,
+        content: role,
       },
       {
         key: '',
