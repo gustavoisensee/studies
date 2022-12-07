@@ -4,6 +4,7 @@ import LoadingButton from '@atlaskit/button/loading-button';
 import Button from '@atlaskit/button/standard-button';
 import Modal, { ModalTransition } from '@atlaskit/modal-dialog';
 import TextField from '@atlaskit/textfield';
+import Calendar from '@atlaskit/calendar';
 import Spinner from '@atlaskit/spinner';
 import Form, {
   Field,
@@ -13,9 +14,13 @@ import Form, {
   ErrorMessage,
 } from '@atlaskit/form';
 import Select from '@atlaskit/select';
+import CalendarIcon from '@atlaskit/icon/glyph/calendar';
 import { saveUser, fetchUser } from '../actions';
 import { updateUsers, userModalObserver } from '../helpers/observer';
 import { useEffect } from 'react';
+
+// const defaultPreviouslySelected = ['2020-12-06'];
+const defaultSelected = ['2020-12-08'];
 
 export default function UserModal() {
   const [isOpen, setIsOpen] = useState(false);
@@ -23,6 +28,7 @@ export default function UserModal() {
     loading: false,
     data: {},
   });
+  const [toggleCalendar, setToggleCalendar] = useState(false);
 
   const openModal = useCallback(async (id) => {
     setIsOpen(true);
@@ -61,6 +67,7 @@ export default function UserModal() {
     userModalObserver.subscribe(openModal);
     return () => userModalObserver.subscribe(openModal);
   }, []);
+  // console.log(toggleCalendar);
 
   return (
     <div>
@@ -115,7 +122,6 @@ export default function UserModal() {
                           </Fragment>
                         )}
                       </Field>
-
                       <Field
                         aria-required={true}
                         name='role'
@@ -144,6 +150,56 @@ export default function UserModal() {
                             />
                             {error && <ErrorMessage>{error}</ErrorMessage>}
                           </Fragment>
+                        )}
+                      </Field>
+                      <Field
+                        aria-required={true}
+                        name='dateOfBirth'
+                        label='Date of birth'
+                        isRequired
+                        isDisabled={state.loading}
+                        defaultValue={state.data?.dateOfBirth || ''}
+                        validate={(val) =>
+                          !!val ? '' : 'Please enter the date of birth!'
+                        }
+                      >
+                        {({ fieldProps, error }) => (
+                          <div>
+                            <TextField
+                              type='text'
+                              elemAfterInput={<CalendarIcon />}
+                              defaultValue={state.data?.dateOfBirth || ''}
+                              readOnly={true}
+                              {...fieldProps}
+                              onFocus={() => setToggleCalendar(true)}
+                              onBlur={() =>
+                                setTimeout(() => setToggleCalendar(false), 200)
+                              }
+                            />
+                            {toggleCalendar && (
+                              <div className='absolute'>
+                                <Calendar
+                                  defaultSelected={
+                                    state.data?.dateOfBirth || ''
+                                  }
+                                  defaultMonth={12}
+                                  defaultYear={2022}
+                                  testId={'calendar'}
+                                  style={{ maxWidth: 100 }}
+                                  onSelect={(event) =>
+                                    setState((prev) => ({
+                                      ...prev,
+                                      data: {
+                                        ...prev.data,
+                                        dateOfBirth: event.iso,
+                                      },
+                                    }))
+                                  }
+                                />
+                              </div>
+                            )}
+                            {error && <ErrorMessage>{error}</ErrorMessage>}
+                          </div>
                         )}
                       </Field>
                     </FormSection>
