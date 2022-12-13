@@ -8,8 +8,6 @@ export default function Users() {
     <div className={styles.container}>
       <h1>Users page</h1>
       <div className={styles.flexColumn}>
-        <Link href='/'>Home page</Link>
-        <Link href='/about'>About page</Link>
         {users.map((id) => (
           <Link key={id} href={`/users/${id}`}>
             User {id} page

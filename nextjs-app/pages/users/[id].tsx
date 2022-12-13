@@ -1,5 +1,4 @@
 import styles from '../../styles/Home.module.css';
-import Link from 'next/link';
 import { useRouter } from 'next/router'
 
 
@@ -10,7 +9,6 @@ export default function User() {
   return (
     <div className={styles.container}>
       <h1>User {id} page</h1>
-      <Link href='/users'>Users</Link>
     </div>
   );
 }
