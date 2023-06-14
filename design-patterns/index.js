@@ -1,6 +1,7 @@
 const { executeSingleton } = require('./singleton');
 const { executePrototype } = require('./prototype');
 const { executeFactory } = require('./factory');
+const { executeFacade } = require('./facade');
 
 // ### Singleton ############
 executeSingleton();
@@ -8,5 +9,8 @@ executeSingleton();
 // ### Prototype ############
 executePrototype();
 
-// ### Factory function #####
+// ### Factory ##############
 executeFactory();
+
+// ### Facade ###############
+executeFacade();

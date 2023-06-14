@@ -14,7 +14,7 @@ function createCar(make, model, year) {
 }
 
 const executeFactory = () => {
-  console.log('\n### Factory function #####');
+  console.log('\n### Factory ##############');
 
   // Creating instances using the factory function
   const car1 = createCar('Toyota', 'Camry', 2021);
