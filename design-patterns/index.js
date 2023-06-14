@@ -1,7 +1,8 @@
-const { executeSingleton } = require('./singleton');
-const { executePrototype } = require('./prototype');
-const { executeFactory } = require('./factory');
-const { executeFacade } = require('./facade');
+const { executeSingleton } = require('./src/singleton');
+const { executePrototype } = require('./src/prototype');
+const { executeFactory } = require('./src/factory');
+const { executeFacade } = require('./src/facade');
+const { executeProxy } = require('./src/proxy');
 
 // ### Singleton ############
 executeSingleton();
@@ -14,3 +15,6 @@ executeFactory();
 
 // ### Facade ###############
 executeFacade();
+
+// ### Proxy ################
+executeProxy();
