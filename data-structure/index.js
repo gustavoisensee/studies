@@ -1,6 +1,6 @@
-const graph = require('./graph');
-const { bfsShortestPath, minStops } = require('./bfs');
-const { dfs } = require('./dfs');
+const graph = require('./src/graph');
+const { bfsShortestPath, minStops } = require('./src/bfs');
+const { dfs } = require('./src/dfs');
 
 // #### BFS - Breath first search #################################
 console.log('shortest path: ', bfsShortestPath('A', 'F', graph));
