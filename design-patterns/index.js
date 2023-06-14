@@ -1,15 +1,12 @@
-const Singleton = require('./singleton');
+const { executeSingleton } = require('./singleton');
 const { executePrototype } = require('./prototype');
+const { executeFactory } = require('./factory');
 
-// ### Singleton ########################################################
-const instance1 = new Singleton();
-console.log(instance1.getData()); // Output: "Hello, I am a singleton!"
+// ### Singleton ############
+executeSingleton();
 
-const instance2 = new Singleton();
-console.log(instance2.getData()); // Output: "Hello, I am a singleton!"
-
-console.log(instance1 === instance2); // Output: true
-
-
-// ### Prototype ########################################################
+// ### Prototype ############
 executePrototype();
+
+// ### Factory function #####
+executeFactory();

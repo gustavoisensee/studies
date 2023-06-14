@@ -27,6 +27,7 @@ const dev = Object.create(personObject, {
 });
 
 const executePrototype = () => {
+  console.log('\n### Prototype ############')
   const person1 = new Person('Gus', 34);
   person1.greet();
   person1.name.capitalize()
