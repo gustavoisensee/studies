@@ -1,0 +1,12 @@
+{
+  "name": "playwright-tests",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {},
+  "author": "Gustavo Isensee",
+  "license": "MIT",
+  "devDependencies": {
+    "@playwright/test": "^1.35.1"
+  }
+}
