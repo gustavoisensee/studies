@@ -3,7 +3,7 @@ import { getName } from '@nx-ws/utils';
 export function NxWelcome({ title }: { title: string }) {
   return (
     <div>
-      Shop page
+      Test 1 page
       {getName()}
     </div>
   );
