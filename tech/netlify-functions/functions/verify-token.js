@@ -1,13 +1,7 @@
-const {
-  getUnauthorized, getSuccess, jwtVerify
-} = require('../helpers/auth');
+const { getSuccess, auth } = require('../helpers/auth');
 
-exports.handler = async function (event, context) {
-  try {
-    const decoded = jwtVerify(event);
-
-    return getSuccess({ decoded });
-  } catch (err) {
-    return getUnauthorized({ error: err.message });
-  }
-};
+exports.handler = async (event, context) => auth(
+  event,
+  context,
+  (user) =>  getSuccess({ user })
+);

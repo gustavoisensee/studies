@@ -15,8 +15,8 @@ const jwtVerify = (event) => {
   try {
     const user = jwt.verify(token, PRIVATE_KEY);
     return user;
-  } catch (err) {
-    return getUnauthorized({ error: err.message });
+  } catch {
+    return undefined;
   }
 }
 
@@ -38,9 +38,10 @@ const getSuccess = (data) => ({
 });
 
 const auth = (event, context, cb) => {
-  if (!jwtVerify(event)) return getUnauthorized();
+  const user = jwtVerify(event);
+  if (!user) return getUnauthorized();
 
-  return cb();
+  return cb(user);
 };
 
 module.exports = {
