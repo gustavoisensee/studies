@@ -12,7 +12,12 @@ const jwtSign = (data) =>
 const jwtVerify = (event) => {
   const token = event?.headers?.authorization || '';
 
-  return jwt.verify(token, PRIVATE_KEY);
+  try {
+    const user = jwt.verify(token, PRIVATE_KEY);
+    return user;
+  } catch (err) {
+    return getUnauthorized({ error: err.message });
+  }
 }
 
 const checkUser = (user, pass) =>
