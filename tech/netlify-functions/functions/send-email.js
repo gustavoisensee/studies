@@ -1,9 +1,11 @@
+const { auth, getSuccess } = require('../helpers/auth');
 const sendEmail = require('../helpers/email');
 
-exports.handler = async function (event, context) {
-  sendEmail();
-  return {
-    statusCode: 200,
-    body: JSON.stringify({ message: 'Email has been sent!' })
-  };
-};
+exports.handler = async (event, context) => auth(
+  event,
+  context,
+  () => {
+    sendEmail();
+    return getSuccess({ message: 'Email has been sent!' })
+  }  
+);

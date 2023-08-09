@@ -1,9 +1,7 @@
-exports.handler = async function (event, context) {
-  return {
-    statusCode: 200,
-    headers: {
-      'content-type': 'application/json'
-    },
-    body: JSON.stringify({ message: "Hello World" }),
-  };
-};
+const { getSuccess, auth } = require('../helpers/auth');
+
+exports.handler = async (event, context) => auth(
+  event,
+  context,
+  () => getSuccess({ message: 'Hello World' })
+);
