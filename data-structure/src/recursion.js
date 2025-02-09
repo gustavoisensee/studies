@@ -18,7 +18,7 @@ function flattenObject(obj, prefix = '') {
   for (let key in obj) {
     const newKey = prefix ? `${prefix}.${key}` : key;
 
-    if (typeof obj[key] === 'object' && !Array.isArray(obj[key])) {
+    if (typeof obj[key] === 'object' && obj[key] !== null && !Array.isArray(obj[key])) {
       result = { ...result, ...flattenObject(obj[key], newKey) };
 
     } else if (Array.isArray(obj[key])) {
