@@ -1,41 +1,42 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import { Item } from './components/Item';
-import './App.css'
+import { useState } from 'react';
 
-const myArray = new Array(1000).fill(0);
+import CounterRerendering from './components/CounterRerendering';
+import CounterRerenderingIsolatedButton from './components/CounterRerenderingIsolatedButton';
+import CounterRerenderingMemo from './components/CounterRerenderingMemo';
+
+import './App.css';
+
+type Option = 'counter' | 'counter-isolated-button' | 'counter-memo';
+
+const options = [
+  { value: 'counter', label: 'Counter - re-rendering' },
+  { value: 'counter-isolated-button', label: 'Counter - isolated button' },
+  { value: 'counter-memo', label: 'Counter - memo' }
+];
+
+const mapComponent = {
+  'counter': CounterRerendering,
+  'counter-isolated-button': CounterRerenderingIsolatedButton,
+  'counter-memo': CounterRerenderingMemo,
+};
 
 function App() {
-  const [count, setCount] = useState(0);
-
-  console.log('Rendering App.tsx');
+  const [select, setSelect] = useState('counter');
+  const Component = mapComponent[select as Option];
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-      {myArray.map((_, i) => (
-        <Item key={i} counter={i} />
-      ))}
+      <h1>Stop the re-rendering hell!</h1>
+
+      <select onChange={(e) => setSelect(e.currentTarget.value)}>
+        {options.map((option, i) => (
+          <option key={`option-${i}`} selected={select === option.value} value={option.value}>
+            {option.label}
+          </option>
+        ))}
+      </select>
+
+      <Component />
     </>
   )
 }

@@ -1,0 +1,1 @@
+export const myArray = new Array(1000).fill(0);
