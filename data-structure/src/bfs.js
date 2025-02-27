@@ -23,6 +23,21 @@ function bfsShortestPath(startNode, endNode, graph) {
   return [];
 }
 
+// from [['A', 'B'], ['B', 'C']] to { A: ['B'], B: ['C'] }
+function convertToGraph(nodes) {
+  const graph = {};
+
+  for (const [from, to] of nodes) {
+      if (!graph[from]) graph[from] = [];
+      if (!graph[to]) graph[to] = [];
+
+      graph[from].push(to);
+      graph[to].push(from);
+  }
+
+  return graph;
+}
+
 function minStops(start, end, graph) {
   const visited = new Set();
   const queue = [{ key: start, counter: 1 }];
@@ -47,5 +62,6 @@ function minStops(start, end, graph) {
 
 module.exports = {
   bfsShortestPath,
-  minStops
+  minStops,
+  convertToGraph,
 };
