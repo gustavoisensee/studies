@@ -23,7 +23,7 @@ function bfsShortestPath(startNode, endNode, graph) {
   return [];
 }
 
-// from [['A', 'B'], ['B', 'C']] to { A: ['B'], B: ['C'] }
+// from [['A', 'B'], ['B', 'C'], [A, D]] to { A: ['B', D], B: ['C'] }
 function convertToGraph(nodes) {
   const graph = {};
 
@@ -39,9 +39,14 @@ function convertToGraph(nodes) {
 }
 
 function minStops(start, end, graph) {
-  const visited = new Set();
-  const queue = [{ key: start, counter: 1 }];
-  visited.add(start);
+  const visited = new Set([start]);
+  const queue = [{ key: start, counter: 0 }];
+  
+  // if one of the nodes: start or end does not exist, return -1
+  if (!graph[start] || !graph[end]) return -1;
+
+  // if same start and end point return 1
+  if (start === end) return 1;
 
   while (queue.length > 0) {
     const node = queue.shift();
@@ -49,10 +54,12 @@ function minStops(start, end, graph) {
 
     for (const child of children) {
       if (!visited.has(child)) {
+        if (end === child) {
+          return node.counter + 1;
+        }
+
         queue.push({ key: child, counter: node.counter + 1 });
         visited.add(child);
-
-        if (end === child) return node.counter;
       }
     }
   }
