@@ -27,5 +27,5 @@ npm install
 ## Running the Project
 Start the chat bot with:
 ```
-npm start
+npm run dev
 ```
