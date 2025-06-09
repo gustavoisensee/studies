@@ -5,7 +5,7 @@ It requires the `deepseek-r1:1.5b` model to function properly.
 
 | Light Mode | Dark Mode |
 | --- | --- |
-| ![Light](https://github.com/gustavoisensee/studies/blob/7a9cfe9fc5d29ae2ac5f3a1d418237f9e7cd0cc3/tech/ai-chatbot/src/assets/chat-dark.png) | ![Light](https://github.com/gustavoisensee/studies/blob/7a9cfe9fc5d29ae2ac5f3a1d418237f9e7cd0cc3/tech/ai-chatbot/src/assets/chat-light.png) |
+| ![Light](https://github.com/gustavoisensee/studies/blob/7a9cfe9fc5d29ae2ac5f3a1d418237f9e7cd0cc3/tech/ai-chatbot/src/assets/chat-light.png) | ![Light](https://github.com/gustavoisensee/studies/blob/7a9cfe9fc5d29ae2ac5f3a1d418237f9e7cd0cc3/tech/ai-chatbot/src/assets/chat-dark.png) |
 
 ## Requirements
 - Ollama installed and running with the `deepseek-r1:1.5b` model.
