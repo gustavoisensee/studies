@@ -1,6 +1,11 @@
 # Todo REST API with FastAPI and SQLite
 
-A simple REST API for managing todos built with FastAPI and SQLite.
+A simple REST API for managing todos built with Python, FastAPI and SQLite.
+
+
+| Docs | Redoc |
+| --- | --- |
+| ![Docs](https://github.com/gustavoisensee/studies/blob/28eca90568af3d0577c8f6e340c2d12f0ed3594f/tech/python-api/assets/docs.png) | ![Redoc](https://github.com/gustavoisensee/studies/blob/28eca90568af3d0577c8f6e340c2d12f0ed3594f/tech/python-api/assets/redoc.png) |
 
 ## Setup
 
