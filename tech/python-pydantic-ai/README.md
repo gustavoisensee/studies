@@ -37,7 +37,8 @@ ollama run deepseek-r1:1.5b
 
 ### 5. Run the agent
 ```
-python agent.py
+python agent-pydantic-ai.py
+python agent-langchain.py
 ```
 
 ## agent.py
