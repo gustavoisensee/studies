@@ -1,0 +1,21 @@
+[project]
+name = "python-langgraph"
+version = "0.1.0"
+description = "A LangGraph project with OpenAI integration"
+authors = [
+    {name = "Gustavo Isensee", email = "gustavo.isensee@gmail.com"}
+]
+dependencies = [
+    "langchain-openai",
+    "langgraph",
+    "python-dotenv",
+]
+requires-python = ">=3.9"
+
+
+[tool.uv]
+dev-dependencies = [
+    "pytest>=7.0.0",
+    "black>=23.0.0",
+    "isort>=5.0.0",
+] 
